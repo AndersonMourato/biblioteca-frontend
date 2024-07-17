@@ -1,29 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Livro } from './models/Livro';
+import { Categoria } from './models/Categoria';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+  private baseUrl: string;
+  private livros: Livro[] | undefined;
 
-  constructor(private http: HttpClient) { }
-
-  getAllLivros(){    
-    this.http.get("http://localhost:8080/livro/todos").subscribe(data =>{
-    console.log(data)
-    })
-
-  /*
-    fetch('http://localhost:8080/livro/todos')
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      // Utilize os dados aqui
-    })
-    .catch(error => {
-      console.error('Erro ao fazer a requisição:', error);
-    });
-  */
+  constructor(private http: HttpClient) { 
+    this.baseUrl = "http://localhost:8080/";
   }
+
+ 
+  public getAllLivros(): Observable<Livro[]> {
+    return this.http.get<Livro[]>(`${this.baseUrl}livro/todos`);
+  }
+
+  public getAllCategorias(): Observable<Categoria[]> {
+    return this.http.get<Categoria[]>(`${this.baseUrl}categoria`);
+  }
+
+
+
 }
+

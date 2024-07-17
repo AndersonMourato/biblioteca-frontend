@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categoria',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categoria.component.css']
 })
 export class CategoriaComponent implements OnInit {
+  @Input()
+  public nome: string = "";
+  @Input()
+  public descricao: string = "";
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
+  }
+
+  search(){
+    this.route.navigate(["livros"], {queryParams: {search: this.nome}});
   }
 
 }

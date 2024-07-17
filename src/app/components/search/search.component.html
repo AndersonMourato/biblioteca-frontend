@@ -1,1 +1,5 @@
-<p>search works!</p>
+<div class="content">
+    <form (ngSubmit)="startSearch()">
+        <input type="text" placeholder="buscar livro 🔎" name="search" [(ngModel)]="search">
+    </form>
+</div>

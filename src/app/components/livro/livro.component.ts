@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/api.service';
+import { Component, Input, OnInit } from '@angular/core';
 
 
 @Component({
@@ -8,12 +7,23 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./livro.component.css']
 })
 export class LivroComponent implements OnInit {
+  @Input()
+  nome: string = " nome";
 
-  constructor(public apiService: ApiService) { }
+  @Input()
+  autor: string = "autor";
 
-  ngOnInit(): void {
+  @Input()
+  tamanho: string = "tamanho";
 
-    this.apiService.getAllLivros();
-  }
+  @Input()
+  texto: string = "texto";
+
+  @Input()
+  categoria: string = "categoria";
+
+  constructor() { }
+
+  ngOnInit(): void {}
 
 }

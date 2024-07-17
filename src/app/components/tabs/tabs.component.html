@@ -1,15 +1,25 @@
 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
   <mat-tab label="Livro"> 
     <app-search></app-search>
-    <app-livro></app-livro> 
-    <app-livro></app-livro> 
-    <app-livro></app-livro> 
-    <app-livro></app-livro>  
+    <app-livro *ngFor="let livro of livros"
+      nome = "{{ livro.nome }}"
+      categoria = "{{ livro.categoria.nome }}"
+      texto = "{{ livro.texto }}"
+      autor = "{{ livro.autor }}"
+      tamanho = "{{ livro.tamanho }}"
+    ></app-livro> 
   </mat-tab>
   
   <mat-tab label="Categoria"> 
-    <app-search></app-search>
-    <app-categoria></app-categoria>
+    <mat-grid-list cols="3" rowHeight="2:1">
+      <mat-grid-tile *ngFor="let categoria of categorias">
+        <app-categoria
+          nome="{{ categoria.nome }}"
+          descricao="{{ categoria.descricao }}"
+        ></app-categoria>
+      </mat-grid-tile>
+
+    </mat-grid-list>
   </mat-tab>
 
   <mat-tab>
