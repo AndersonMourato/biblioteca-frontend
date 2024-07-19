@@ -1,1 +1,21 @@
-<p>cadastro works!</p>
+<div class="content">
+    <div class="livro">
+        <h3> Cadastra novo Livro </h3>
+        <form class="form-livro">
+            <input type="text" placeholder="Nome" [(ngModel)]="teste">
+            <input type="text" placeholder="Autor">
+            <input type="text" placeholder="Texto">
+            <select>
+                <option value="PEQUENO"> PEQUENO </option>
+                <option value="MEDIO"> MÉDIO </option>
+                <option value="GRANDE"> GRANDE </option>
+            </select>
+            <select>
+                <option value="PEQUENO"> Categoria </option>
+                <option value="MEDIO"> Categoria </option>
+                <option value="GRANDE"> Categoria </option>
+            </select>
+            <button (click)="sendForm()"> Cadastrar </button>
+        </form>
+    </div>
+</div>
